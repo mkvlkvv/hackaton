@@ -30,9 +30,9 @@ export default function ArticlePage({ meta, content }) {
         <MetaBar meta={meta} />
 
         <section aria-labelledby="lead-heading" className={styles.lead}>
-          <h2 id="lead-heading" className="sr-only">О маршруте</h2>
-          <p className={styles.leadText} itemProp="description">{content.lead}</p>
-          {content.intro.map((p, i) => <p key={i} className={styles.paragraph}>{p}</p>)}
+            <h2 id="lead-heading" className="sr-only">О маршруте</h2>
+            <p className={styles.leadText} itemProp="description">{content.lead}</p>
+            {content.intro.map((p, i) => <p key={i} className={styles.paragraph}>{p}</p>)}
         </section>
 
         {content.routeMap && <RouteMap data={content.routeMap} />}

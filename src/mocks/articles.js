@@ -65,7 +65,7 @@ const IMG = {
 };
 
 export const ARTICLES = [
-  { id: 5122, title: 'По пути к неизведанному: автомаршрут по Волгоградской области', image: IMG.volgograd, link: '/article/polyarny/', description: 'Загадки старых подземелий, тайны звездного неба и «марсианские» пески.', tags: ['С детьми','Автомаршрут','С подростком','Лето','Межсезонье'], properties: { distance: '660 км', timezone: 'GMT+3', duration: '3 дня', season: 'апрель-октябрь' }, route: ['Волгоград','Калачевский р-н','Иловлинский р-н','Ольховский р-н','Жирновский р-н'] },
+  { id: 5122, title: 'По пути к неизведанному: автомаршрут по Волгоградской области', image: IMG.volgograd, link: '/article/polyarny/', description: 'Загадки старых подземелий, тайны звездного неба и марсианские пески.', tags: ['С детьми','Автомаршрут','С подростком','Лето','Межсезонье'], properties: { distance: '660 км', timezone: 'GMT+3', duration: '3 дня', season: 'апрель-октябрь' }, route: ['Волгоград','Калачевский р-н','Иловлинский р-н','Ольховский р-н','Жирновский р-н'] },
   { id: 5110, title: 'Енисейский тракт', image: IMG.enisey, link: '/article/polyarny/', description: 'Автомобильное путешествие по сибирской земле, где оживает история.', tags: ['С подростком','Зима','Круглый год','Межсезонье','Лето','Автомаршрут','С детьми'], properties: { distance: '440 км', timezone: 'GMT+7', duration: '3 дня', season: 'круглый год' }, route: ['Красноярск','Барабаново','Казачинское','Енисейск'] },
   { id: 5104, title: 'Маяки Владивостока', image: IMG.vladivostok, link: '/article/polyarny/', description: 'Любуемся маяками в однодневном путешествии по столице Дальнего Востока.', tags: ['Автомаршрут','На выходные','С детьми','Межсезонье','Лето','С подростком'], properties: { distance: '42 км', timezone: 'GMT+10', duration: '1 день', season: 'июнь-сентябрь' }, route: ['Владивосток'] },
   { id: 5068, title: 'Белое море', image: IMG.belomore, link: '/article/polyarny/', description: 'Недельное автопутешествие по морскому побережью Архангельской области.', tags: ['Межсезонье','Лето','Круглый год','Активный отдых','Автомаршрут','Зима','С детьми','С подростком'], properties: { distance: '1120 км', timezone: 'GMT+3', duration: '8 дней', season: 'круглый год' }, route: ['Архангельск','Малые Карелы','Рикасово','Левковка','Северодвинск','Нёнокса','Уна','Луда','Пурнема','Онега...'] },
@@ -189,7 +189,7 @@ export const ARTICLE_CONTENT = {
         id: 'day-1-noyabrsk',
         title: 'День 1. Ноябрьск',
         description:
-          'Путешествие начнется с «южных ворот» Ямала — Ноябрьска. Молодой город сочетает в себе индустриальное наследие, северные природные ландшафты и культурные особенности.',
+          'Путешествие начнется с южных ворот Ямала — Ноябрьска. Молодой город сочетает в себе индустриальное наследие, северные природные ландшафты и культурные особенности.',
         objects: [
           {
             id: 'noyabrsk-park',
@@ -219,13 +219,13 @@ export const ARTICLE_CONTENT = {
             id: 'etnopark-num',
             title: 'Этнопарк «Нум»',
             description:
-              'Посреди «Ноябрьск-парка» есть уголок, где живут легенды и предания коренных народов Ямала. Назван он в честь главного божества ненцев — Нума.',
+              'Посреди Ноябрьск-парка есть уголок, где живут легенды и предания коренных народов Ямала. Назван он в честь главного божества ненцев — Нума.',
             gallery: [
               { src: 'https://tse2.mm.bing.net/th/id/OIP.mbc2OZoasdL6rv-X3J1YYgHaFb?rs=1&pid=ImgDetMain&o=7&rm=3', alt: 'Традиционный чум в этнопарке', credit: 'Unsplash' },
               { src: 'https://foresthouse.ru/wp-content/uploads/2022/12/severnyj-olen-yagel.jpg', alt: 'Северные олени в вольере', credit: 'Unsplash / Casey Horner' },
             ],
             info: [
-              { label: 'Адрес', value: 'г. Ноябрьск, ул. Ленина, «Ноябрьск-парк»' },
+              { label: 'Адрес', value: 'г. Ноябрьск, ул. Ленина, Ноябрьск-парк' },
               { label: 'Время работы', value: 'вт-пт 11:00-21:00, сб-вс 10:00-22:00' },
               { label: 'Время на осмотр', value: '60 минут' },
               { label: 'Контакты', value: '8 (800) 301-18-66' },
@@ -252,14 +252,14 @@ export const ARTICLE_CONTENT = {
           },
         ],
         hotels: [
-          { name: 'Ресторанно-гостиничный комплекс «Аляска»', stars: 3, distance: '1.2 км от центра', url: 'https://hotelalaska.ru/', image: 'https://static.tildacdn.com/tild3662-3661-4334-a338-346332353465/5H3A5431.jpg', classified: true },
-          { name: 'Гостиница «Россия»', stars: 3, distance: '2 км от центра', url: 'https://russia-noyabrsk.ru/', image: 'https://tse4.mm.bing.net/th/id/OIP.izNXVh-cmAeMGg0GyK5juAHaFi?rs=1&pid=ImgDetMain&o=7&rm=3', classified: true },
-          { name: 'Отель «Европа»', stars: 3, distance: '2.8 км от центра', url: 'https://evropahotel.ru/', image: 'https://n1s1.hsmedia.ru/ef/17/db/ef17dba5ef9951b84f00281aa902ba91/728x546_1_501c16119ee54b5cd3b78f0d1f28c38b@1706x1280_0xac120003_20890043461637573872.jpeg', classified: true },
+          { name: 'Ресторанно-гостиничный комплекс Аляска', stars: 3, distance: '1.2 км от центра', url: 'https://hotelalaska.ru/', image: 'https://static.tildacdn.com/tild3662-3661-4334-a338-346332353465/5H3A5431.jpg', classified: true },
+          { name: 'Гостиница Россия', stars: 3, distance: '2 км от центра', url: 'https://russia-noyabrsk.ru/', image: 'https://tse4.mm.bing.net/th/id/OIP.izNXVh-cmAeMGg0GyK5juAHaFi?rs=1&pid=ImgDetMain&o=7&rm=3', classified: true },
+          { name: 'Отель Европа', stars: 3, distance: '2.8 км от центра', url: 'https://evropahotel.ru/', image: 'https://n1s1.hsmedia.ru/ef/17/db/ef17dba5ef9951b84f00281aa902ba91/728x546_1_501c16119ee54b5cd3b78f0d1f28c38b@1706x1280_0xac120003_20890043461637573872.jpeg', classified: true },
         ],
         restaurants: [
-          { name: 'Ресторан «Перчини»', distance: '900 м от центра', cuisine: 'Европейская, Итальянская', url: 'https://perchini.ru/noyabrsk/', image: 'https://tse2.mm.bing.net/th/id/OIP.cLnPV-RTAL-Tcf1Up-JJlgHaE8?rs=1&pid=ImgDetMain&o=7&rm=3' },
-          { name: 'Ресторан «Мука»', distance: '1 км от центра', cuisine: 'Русская', url: 'https://vk.com/club170944734', image: 'https://irecommend.ru/sites/default/files/product-images/42995/YzI6kUjZVcrYH6gtMr9zDw.jpeg' },
-          { name: 'Кафе «Мидийный дом»', distance: '1 км от центра', cuisine: 'Европейская, Средиземноморская', url: 'https://musselhouse.ru/nojabrsk-soviet', image: 'https://tse4.mm.bing.net/th/id/OIP.NkexwyvPOHnvPD-M1bUSUAHaEK?rs=1&pid=ImgDetMain&o=7&rm=3' },
+          { name: 'Ресторан Перчини', distance: '900 м от центра', cuisine: 'Европейская, Итальянская', url: 'https://perchini.ru/noyabrsk/', image: 'https://tse2.mm.bing.net/th/id/OIP.cLnPV-RTAL-Tcf1Up-JJlgHaE8?rs=1&pid=ImgDetMain&o=7&rm=3' },
+          { name: 'Ресторан Мука', distance: '1 км от центра', cuisine: 'Русская', url: 'https://vk.com/club170944734', image: 'https://irecommend.ru/sites/default/files/product-images/42995/YzI6kUjZVcrYH6gtMr9zDw.jpeg' },
+          { name: 'Кафе Мидийный дом', distance: '1 км от центра', cuisine: 'Европейская, Средиземноморская', url: 'https://musselhouse.ru/nojabrsk-soviet', image: 'https://tse4.mm.bing.net/th/id/OIP.NkexwyvPOHnvPD-M1bUSUAHaEK?rs=1&pid=ImgDetMain&o=7&rm=3' },
         ],
       },
       {
@@ -304,9 +304,9 @@ export const ARTICLE_CONTENT = {
           },
         ],
         hotels: [
-          { name: 'Гостиница «Амакс Полярная Звезда»', stars: 3, distance: '300 м от центра', url: 'https://nurengoj.amaks-hotels.ru/', image: 'https://tse4.mm.bing.net/th/id/OIP.tUWFureqWxWZZj_SVxG7ZwHaEO?rs=1&pid=ImgDetMain&o=7&rm=3', classified: true },
+          { name: 'Гостиница Амакс Полярная Звезда', stars: 3, distance: '300 м от центра', url: 'https://nurengoj.amaks-hotels.ru/', image: 'https://tse4.mm.bing.net/th/id/OIP.tUWFureqWxWZZj_SVxG7ZwHaEO?rs=1&pid=ImgDetMain&o=7&rm=3', classified: true },
           { name: 'Гостиница Diamond', stars: 3, distance: '3.4 км от центра', url: 'https://diamond-nur.com/', image: 'https://tse3.mm.bing.net/th/id/OIP.GuoxpTeF53bbXoOavJpFKgHaEo?rs=1&pid=ImgDetMain&o=7&rm=3', classified: true },
-          { name: 'Отель «Газовик»', stars: 3, distance: '9.4 км от центра', url: 'https://www.gazovik89.ru/', image: 'https://cdn.worldota.net/t/640x400/extranet/8c/98/8c98c94baf051fc747a870180a5725b3c6c505b8.jpeg', classified: true },
+          { name: 'Отель Газовик', stars: 3, distance: '9.4 км от центра', url: 'https://www.gazovik89.ru/', image: 'https://cdn.worldota.net/t/640x400/extranet/8c/98/8c98c94baf051fc747a870180a5725b3c6c505b8.jpeg', classified: true },
         ],
         restaurants: [],
       },
