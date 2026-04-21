@@ -6,36 +6,41 @@ const VISIBLE = 4;
 export default function TagFilters({ tags, activeTags, onToggle }) {
   const [expanded, setExpanded] = useState(false);
   const legendId = useId();
-  const shown = expanded ? tags : tags.slice(0, VISIBLE);
+  const extraId = useId();
+
+  const primary = tags.slice(0, VISIBLE);
+  const extra = tags.slice(VISIBLE);
 
   return (
     <div role="group" aria-labelledby={legendId} className={styles.tagsGroup}>
       <span id={legendId} className="sr-only">Быстрые фильтры по тегам</span>
-      {shown.map(tag => {
-        const pressed = activeTags.includes(tag.id);
-        return (
+
+      {primary.map((tag) => (
+        <button
+          key={tag.id}
+          type="button"
+          className={styles.tagBtn}
+          aria-pressed={activeTags.includes(tag.id)}
+          onClick={() => onToggle(tag.id)}
+        >
+          {tag.name}
+        </button>
+      ))}
+
+      {/* Disclosure: кнопка + управляемая область с id */}
+      <span id={extraId} hidden={!expanded} className={styles.tagsExtra}>
+        {extra.map((tag) => (
           <button
             key={tag.id}
             type="button"
             className={styles.tagBtn}
-            aria-pressed={pressed}
+            aria-pressed={activeTags.includes(tag.id)}
             onClick={() => onToggle(tag.id)}
           >
             {tag.name}
           </button>
-        );
-      })}
-      {tags.length > VISIBLE && (
-        <button
-          type="button"
-          className={`${styles.tagBtn} ${styles.tagBtnMore}`}
-          aria-expanded={expanded}
-          aria-label={expanded ? 'Скрыть дополнительные теги' : 'Показать все теги фильтрации'}
-          onClick={() => setExpanded(v => !v)}
-        >
-          {expanded ? 'Скрыть' : 'Показать ещё...'}
-        </button>
-      )}
+        ))}
+      </span>
     </div>
   );
 }
