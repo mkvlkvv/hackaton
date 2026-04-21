@@ -3,6 +3,7 @@ import Breadcrumbs from './Breadcrumbs';
 import TableOfContents from './TableOfContents';
 import DayBlock from './DayBlock';
 import MetaBar from './MetaBar';
+import RouteMap from './RouteMap';
 
 export default function ArticlePage({ meta, content }) {
   return (
@@ -33,6 +34,8 @@ export default function ArticlePage({ meta, content }) {
           <p className={styles.leadText} itemProp="description">{content.lead}</p>
           {content.intro.map((p, i) => <p key={i} className={styles.paragraph}>{p}</p>)}
         </section>
+
+        {content.routeMap && <RouteMap data={content.routeMap} />}
 
         <TableOfContents days={content.days} />
 
