@@ -22,13 +22,15 @@ export default function Pagination({ currentPage, totalPages, onChange }) {
         <button type="button" className={styles.switchBtn}
                 disabled={currentPage === 1}
                 onClick={() => onChange(1)}
-                aria-label="На первую страницу">
+                aria-label="На первую страницу"
+                >
           <Chevron double left />
         </button>
         <button type="button" className={styles.switchBtn}
                 disabled={currentPage === 1}
                 onClick={() => onChange(currentPage - 1)}
-                aria-label="Предыдущая страница">
+                aria-label="Предыдущая страница"
+                >
           <Chevron left />
         </button>
 
@@ -55,13 +57,15 @@ export default function Pagination({ currentPage, totalPages, onChange }) {
         <button type="button" className={styles.switchBtn}
                 disabled={currentPage === totalPages}
                 onClick={() => onChange(currentPage + 1)}
-                aria-label="Следующая страница">
+                aria-label="Следующая страница"
+                >
           <Chevron />
         </button>
         <button type="button" className={styles.switchBtn}
                 disabled={currentPage === totalPages}
                 onClick={() => onChange(totalPages)}
-                aria-label="На последнюю страницу">
+                aria-label="На последнюю страницу"
+                >
           <Chevron double />
         </button>
       </div>

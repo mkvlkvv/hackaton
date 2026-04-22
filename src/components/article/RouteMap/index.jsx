@@ -119,7 +119,7 @@ export default function RouteMap({ data }) {
         id="route-panel-list"
         aria-labelledby="route-tab-list"
         hidden={view !== 'list'}
-        tabIndex={0}
+
         className={styles.panel}
       >
         <RouteList points={data.points} segments={data.segments} />

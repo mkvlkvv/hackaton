@@ -5,7 +5,7 @@ import PlacesCarousel from './PlacesCarousel';
 export default function DayBlock({ day }) {
   return (
     <section aria-labelledby={day.id} className={styles.day}>
-      <h2 id={day.id} className={styles.dayTitle}>{day.title}</h2>
+      <h2 id={day.id} className={styles.dayTitle} >{day.title}</h2>
       <p className={styles.paragraph}>{day.description}</p>
 
       {day.objects.map((obj) => (

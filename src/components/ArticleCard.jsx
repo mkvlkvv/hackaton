@@ -21,12 +21,12 @@ export default function ArticleCard({ article }) {
     >
       <div className={styles.cardImageWrap}>
         <img src={image} alt="" className={styles.cardImage} itemProp="image" loading="lazy" />
-        <h3 id={`card-title-${article.id}`} className={styles.cardTitle} itemProp="headline">
+        <h2 id={`card-title-${article.id}`} className={styles.cardTitle} itemProp="headline">
           {/* Только заголовок — ссылка; ::after растягивает клик-зону на карточку */}
           <a href={link} className={styles.cardTitleLink}>
             {title}
           </a>
-        </h3>
+        </h2>
       </div>
 
       <div className={styles.cardBody}>

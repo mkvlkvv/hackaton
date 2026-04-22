@@ -6,7 +6,7 @@ export default function Footer() {
       <div className={styles.container}>
         <div className={styles.footerTop}>
           <section className={styles.footerColContacts} aria-labelledby="footer-contacts">
-            <h2 id="footer-contacts" className={styles.footerSectionTitle}>Контакты</h2>
+            <h3 id="footer-contacts" className={styles.footerSectionTitle}>Контакты</h3>
             <a className={styles.footerLink} href="mailto:press.rt@nationalpriority.ru">
               press.rt@nationalpriority.ru
             </a>
