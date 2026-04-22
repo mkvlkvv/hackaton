@@ -42,26 +42,26 @@ export const TAGS = [
 ];
 
 const IMG = {
-  volgograd: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200',
-  enisey: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200',
-  vladivostok: 'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200',
-  belomore: 'https://images.unsplash.com/photo-1500534623283-312aade485b7?w=1200',
-  polyarny: 'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=1200',
-  stars: 'https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=1200',
-  saratov: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200',
-  nizhegorod: 'https://images.unsplash.com/photo-1513326738677-b964603b136d?w=1200',
-  kamensk: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200',
-  ural: 'https://images.unsplash.com/photo-1506260408121-e353d10b87c7?w=1200',
-  bam: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200',
-  birobidzhan: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200',
-  kurgan: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1200',
-  karelia: 'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=1200',
-  sayano: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200',
-  chelyabinsk: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200',
-  tver: 'https://images.unsplash.com/photo-1513326738677-b964603b136d?w=1200',
-  ivanovo: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200',
-  dagestan: 'https://images.unsplash.com/photo-1506260408121-e353d10b87c7?w=1200',
-  vytegra: 'https://images.unsplash.com/photo-1500534623283-312aade485b7?w=1200'
+  volgograd: 'https://cdni.rbth.com/russia85/images/2022.03/original/62431c8185600a31e5578223.jpg',
+  enisey: 'https://i.bigenc.ru/resizer/resize?sign=dIhxSIhwE-xBhYHS7VNFxw&filename=vault/6143f227f4ceec62197e552b30bf75af.webp&width=1200',
+  vladivostok: 'https://avatars.mds.yandex.net/get-marketcms/879900/img-0e0b4618-d588-4b55-86e5-c66ec1a6d994.jpeg/optimize',
+  belomore: 'https://sobory.ru/pic/04650/04653_20221005_1914583.jpg',
+  polyarny: 'https://th.bing.com/th/id/R.eb16fe1341904b9de7917d0298606b0b?rik=zT9Eg8Fdy6lDow&riu=http%3a%2f%2fcdn01.ru%2ffiles%2fusers%2fimages%2fb8%2fa9%2fb8a98ca1bb555f8de142a57a41e51b85.jpg&ehk=7jjANaoGmfLwMYDeb28gAMFv9R5OV8KcCkDHFV%2bRjM4%3d&risl=&pid=ImgRaw&r=0',
+  stars: 'https://tse4.mm.bing.net/th/id/OIP.YD0ZxneTe17YFM6So3XN6AHaEt?rs=1&pid=ImgDetMain&o=7&rm=3',
+  saratov: 'https://th.bing.com/th/id/R.faa403921c434065012418ea65239bbb?rik=UGUP7cBQcR70Xg&pid=ImgRaw&r=0',
+  nizhegorod: 'https://tse4.mm.bing.net/th/id/OIF.PDXaQFbupS2tiPZTPY4wMw?rs=1&pid=ImgDetMain&o=7&rm=3',
+  kamensk: 'https://tse4.mm.bing.net/th/id/OIP.KAkaFfjHQm7yv3OTxF0_6AHaFH?rs=1&pid=ImgDetMain&o=7&rm=3',
+  ural: 'https://tse3.mm.bing.net/th/id/OIP.bsm2fioY-S6FoeD_ItaEKAHaE5?rs=1&pid=ImgDetMain&o=7&rm=3',
+  bam: 'https://tse3.mm.bing.net/th/id/OIP.-EJRgBB4aGIEPiHfCqBWtgHaDo?rs=1&pid=ImgDetMain&o=7&rm=30',
+  birobidzhan: 'https://tse2.mm.bing.net/th/id/OIP.HDlj9tHNb2UK8s9y3pboxQHaE8?rs=1&pid=ImgDetMain&o=7&rm=3',
+  kurgan: 'https://th.bing.com/th/id/R.fa3128be70f00e8cedc0cc850d40c6b2?rik=moa%2byGurZKUD%2fA&pid=ImgRaw&r=0',
+  karelia: 'https://tse2.mm.bing.net/th/id/OIP.VnjeA5ZyX9JyHz_rgWnF5AHaE8?rs=1&pid=ImgDetMain&o=7&rm=3',
+  sayano: 'https://tse1.mm.bing.net/th/id/OIP.DEcDkk0_KfgW3jx1340YSwHaEz?rs=1&pid=ImgDetMain&o=7&rm=3',
+  chelyabinsk: 'https://tse1.mm.bing.net/th/id/OIP._gybzB0k3VYL8laW8JvcrQHaE2?rs=1&pid=ImgDetMain&o=7&rm=3',
+  tver: 'https://tse1.mm.bing.net/th/id/OIP.93Ki2EAUKJMo4o-CDcij_gHaFN?rs=1&pid=ImgDetMain&o=7&rm=3',
+  ivanovo: 'https://th.bing.com/th/id/R.06fb642a6475b8d4492ac4f599d7e636?rik=5YqGkAc9B%2fkKSQ&pid=ImgRaw&r=0',
+  dagestan: 'https://youtravel.me/upload/medialibrary/bb9/pr971g1se3ef6d1xekr8l08f8sfwtur4.jpg',
+  vytegra: 'https://th.bing.com/th/id/R.7629ac7059535e28808168cf83b7d328?rik=qKK7yIb7hnpBvQ&pid=ImgRaw&r=0'
 };
 
 export const ARTICLES = [
