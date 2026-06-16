@@ -1,0 +1,327 @@
+/* ================ Корневой блок ================ */
+.routeMap {
+  margin: 2.5rem 0;
+  padding: 1.5rem;
+  background: #f7f9fc;
+  border: 1px solid #e1e8ef;
+  border-radius: 12px;
+}
+
+.heading {
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  color: #1a2b42;
+}
+
+/* ================ Сводка ================ */
+.summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin: 0 0 1.5rem;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 8px;
+}
+
+.summaryItem {
+  margin: 0;
+}
+
+.summaryItem dt {
+  font-size: 0.85rem;
+  color: #5a6a7e;
+  margin-bottom: 0.25rem;
+}
+
+.summaryItem dd {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #1a2b42;
+}
+
+/* ================ Переключатель видов ================ */
+.tablist {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 1.5rem;
+  padding: 0.25rem;
+  background: #e1e8ef;
+  border-radius: 8px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  flex: 1 1 auto;
+  min-width: 100px;
+  min-height: 44px;
+  padding: 0.6rem 1rem;
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  color: #1a2b42;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.tab:hover {
+  background: #fff;
+}
+
+.tab:focus-visible {
+  outline: 2px solid #185fa5;
+  outline-offset: 2px;
+}
+
+.tabActive {
+  background: #fff;
+  color: #185fa5;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.tabIcon {
+  font-size: 1.1rem;
+}
+
+/* ================ Панели ================ */
+.panel {
+  outline: none;
+}
+
+.panel:focus-visible {
+  outline: 2px solid #185fa5;
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+/* ================ Вид: Список ================ */
+.routeList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: none;
+}
+
+.routeListItem {
+  margin-bottom: 0;
+}
+
+.pointHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.orderBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  background: #185fa5;
+  color: #fff;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.pointTitle {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.pointTitle a {
+  color: #185fa5;
+  text-decoration: none;
+}
+
+.pointTitle a:hover,
+.pointTitle a:focus-visible {
+  text-decoration: underline;
+}
+
+.pointDescription {
+  margin: 0 0 0.5rem 2.75rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+.pointAddress {
+  margin: 0 0 0 2.75rem;
+  font-style: normal;
+  font-size: 0.9rem;
+  color: #5a6a7e;
+}
+
+.segmentBlock {
+  margin: 1rem 0 1rem 2.75rem;
+  padding: 0.75rem 1rem;
+  background: #fff;
+  border-left: 3px solid #a8c4e0;
+  border-radius: 0 6px 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.segmentArrow {
+  font-size: 1.3rem;
+  color: #185fa5;
+}
+
+.segmentInfo {
+  margin: 0;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+/* ================ Вид: Схема (Таймлайн) ================ */
+.timeline {
+  list-style: none;
+  padding: 1.5rem 0.5rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.timelineItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.timelinePoint {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: #fff;
+  border: 2px solid #185fa5;
+  border-radius: 8px;
+  min-width: 200px;
+}
+
+.timelineNumber {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  background: #185fa5;
+  color: #fff;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.timelineName {
+  font-size: 1.05rem;
+  color: #1a2b42;
+}
+
+.timelineSegment {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  color: #5a6a7e;
+  font-size: 0.9rem;
+}
+
+.timelineArrow {
+  font-size: 1.2rem;
+  color: #a8c4e0;
+  transform: rotate(90deg);
+  display: inline-block;
+}
+
+/* Десктоп — горизонтальная схема */
+@media (min-width: 768px) {
+  .timeline {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .timelineItem {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .timelineSegment {
+    padding: 0 0.75rem;
+  }
+
+  .timelineArrow {
+    transform: none;
+  }
+}
+
+/* ================ Загрузка карты ================ */
+.mapLoading {
+  padding: 3rem;
+  text-align: center;
+  color: #5a6a7e;
+  background: #fff;
+  border-radius: 8px;
+}
+
+/* ================ Ссылки на скачивание ================ */
+.downloads {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e1e8ef;
+}
+
+.downloadsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.downloadLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  min-height: 44px;
+  background: #fff;
+  border: 2px solid #185fa5;
+  border-radius: 6px;
+  color: #185fa5;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.downloadLink:hover {
+  background: #185fa5;
+  color: #fff;
+}
+
+.downloadLink:focus-visible {
+  outline: 2px solid #185fa5;
+  outline-offset: 2px;
+}
+
+/* Уважаем prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .tab,
+  .downloadLink {
+    transition: none;
+  }
+}

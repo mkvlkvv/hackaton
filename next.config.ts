@@ -3,12 +3,9 @@
 const nextConfig = {
   output: 'export',
   trailingSlash: true,
-  reactStrictMode: true,
   images: {
-    remotePatterns: [
-      { protocol: 'https', hostname: '**' }
-    ]
-  }
-}
+    unoptimized: true,  // обязательно для статического экспорта
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

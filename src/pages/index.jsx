@@ -58,7 +58,7 @@ export default function HomePage() {
 
       <Header />
 
-      <main id="main">
+      <main id="main" tabIndex={-1}>
         <HeroWithFilters
           title="Автомаршруты"
           directions={DIRECTIONS}

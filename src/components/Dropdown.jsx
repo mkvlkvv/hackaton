@@ -1,71 +1,155 @@
-import { useEffect, useRef, useState, useId } from 'react';
+import { useEffect, useRef, useState, useId, useCallback } from 'react';
 import styles from '@/styles/Page.module.css';
 
+/**
+ * Select-Only Combobox pattern
+ * https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-select-only/
+ */
 export default function Dropdown({ label, options, value, onChange, ariaLabel }) {
   const [open, setOpen] = useState(false);
-  const [activeIdx, setActiveIdx] = useState(-1);
+  const [activeId, setActiveId] = useState(null);
+  const [typeahead, setTypeahead] = useState('');
+
   const btnRef = useRef(null);
   const listRef = useRef(null);
+  const typeaheadTimer = useRef(null);
+
   const listId = useId();
   const labelId = useId();
+  const optionIdPrefix = useId();
 
-  const selected = options.find(o => o.id === value);
+  // Опция "Не выбрано" для возможности снятия выбора (нативно у combobox нет toggle)
+  const allOptions = [{ id: '__none__', name: label }, ...options];
+
+  const selected = options.find((o) => o.id === value);
   const displayText = selected ? selected.name : label;
 
+  const getOptionId = (id) => `${optionIdPrefix}-opt-${id}`;
+
+  const openList = useCallback((focusFirstOrSelected = true) => {
+    setOpen(true);
+    if (focusFirstOrSelected) {
+      const selIdx = allOptions.findIndex((o) => o.id === value);
+      const idx = selIdx >= 0 ? selIdx : 0;
+      setActiveId(allOptions[idx].id);
+    }
+  }, [allOptions, value]);
+
+  const closeList = useCallback((returnFocus = true) => {
+    setOpen(false);
+    setActiveId(null);
+    setTypeahead('');
+    if (returnFocus) btnRef.current?.focus();
+  }, []);
+
+  // Клик вне закрывает
   useEffect(() => {
     if (!open) return;
     const onDocDown = (e) => {
       if (!btnRef.current?.contains(e.target) && !listRef.current?.contains(e.target)) {
-        setOpen(false);
+        closeList(false);
       }
     };
     document.addEventListener('mousedown', onDocDown);
     return () => document.removeEventListener('mousedown', onDocDown);
-  }, [open]);
+  }, [open, closeList]);
 
+  // Прокрутка к активной опции (для aria-activedescendant)
   useEffect(() => {
-    if (open && listRef.current) {
-      const selIdx = options.findIndex(o => o.id === value);
-      const idx = selIdx >= 0 ? selIdx : 0;
-      setActiveIdx(idx);
-      const items = listRef.current.querySelectorAll('[role="option"]');
-      items[idx]?.focus();
-    }
-  }, [open]);
+    if (!open || !activeId || !listRef.current) return;
+    const el = listRef.current.querySelector(`#${CSS.escape(getOptionId(activeId))}`);
+    el?.scrollIntoView({ block: 'nearest' });
+  }, [activeId, open]);
 
-  const handleBtnKey = (e) => {
-    if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
-      e.preventDefault(); setOpen(true);
+  const moveActive = (delta) => {
+    const idx = allOptions.findIndex((o) => o.id === activeId);
+    const nextIdx = (idx + delta + allOptions.length) % allOptions.length;
+    setActiveId(allOptions[nextIdx].id);
+  };
+
+  const commitSelection = (opt) => {
+    onChange(opt.id === '__none__' ? null : opt.id);
+    closeList(true);
+  };
+
+  // Typeahead: поиск по первой(-ым) буквам — требование APG
+  const handleTypeahead = (char) => {
+    clearTimeout(typeaheadTimer.current);
+    const next = (typeahead + char).toLowerCase();
+    setTypeahead(next);
+    typeaheadTimer.current = setTimeout(() => setTypeahead(''), 500);
+
+    const match = allOptions.find((o) => o.name.toLowerCase().startsWith(next));
+    if (match) {
+      if (!open) openList(false);
+      setActiveId(match.id);
     }
   };
 
-  const handleListKey = (e) => {
-    const items = listRef.current.querySelectorAll('[role="option"]');
-    if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      const n = (activeIdx + 1) % options.length;
-      setActiveIdx(n); items[n]?.focus();
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      const p = (activeIdx - 1 + options.length) % options.length;
-      setActiveIdx(p); items[p]?.focus();
-    } else if (e.key === 'Escape') {
-      e.preventDefault(); setOpen(false); btnRef.current?.focus();
-    } else if (e.key === 'Home') {
-      e.preventDefault(); setActiveIdx(0); items[0]?.focus();
-    } else if (e.key === 'End') {
-      e.preventDefault();
-      const last = options.length - 1;
-      setActiveIdx(last); items[last]?.focus();
-    } else if (e.key === 'Tab') {
-      setOpen(false);
-    }
-  };
+  const handleKeyDown = (e) => {
+    const { key, altKey } = e;
 
-  const select = (opt) => {
-    onChange(opt.id === value ? null : opt.id);
-    setOpen(false);
-    btnRef.current?.focus();
+    // Закрыто → открываем по стрелкам/Enter/Space/буквам
+    if (!open) {
+      if (key === 'ArrowDown' || key === 'ArrowUp' || key === 'Enter' || key === ' ') {
+        e.preventDefault();
+        openList(true);
+        return;
+      }
+      if (altKey && key === 'ArrowDown') {
+        e.preventDefault();
+        openList(true);
+        return;
+      }
+      if (key.length === 1 && /\S/.test(key)) {
+        e.preventDefault();
+        openList(false);
+        handleTypeahead(key);
+        return;
+      }
+      return;
+    }
+
+    // Открыто
+    switch (key) {
+      case 'Escape':
+        e.preventDefault();
+        closeList(true);
+        break;
+      case 'ArrowDown':
+        e.preventDefault();
+        if (altKey) break;
+        moveActive(1);
+        break;
+      case 'ArrowUp':
+        e.preventDefault();
+        moveActive(-1);
+        break;
+      case 'Home':
+        e.preventDefault();
+        setActiveId(allOptions[0].id);
+        break;
+      case 'End':
+        e.preventDefault();
+        setActiveId(allOptions[allOptions.length - 1].id);
+        break;
+      case 'Enter':
+      case ' ': {
+        e.preventDefault();
+        const opt = allOptions.find((o) => o.id === activeId);
+        if (opt) commitSelection(opt);
+        break;
+      }
+      case 'Tab':
+        // Закрываем, но НЕ перехватываем Tab — фокус уйдёт дальше естественно
+        closeList(false);
+        break;
+      default:
+        if (key.length === 1 && /\S/.test(key)) {
+          e.preventDefault();
+          handleTypeahead(key);
+        }
+    }
   };
 
   return (
@@ -75,43 +159,50 @@ export default function Dropdown({ label, options, value, onChange, ariaLabel })
         ref={btnRef}
         type="button"
         className={styles.filterBtn}
+        role="combobox"
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-controls={listId}
         aria-labelledby={labelId}
-        onClick={() => setOpen(o => !o)}
-        onKeyDown={handleBtnKey}
+        aria-activedescendant={open && activeId ? getOptionId(activeId) : undefined}
+        onClick={() => (open ? closeList(false) : openList(true))}
+        onKeyDown={handleKeyDown}
       >
         <span>{displayText}</span>
         <svg className={styles.filterArrow} width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
-          <path d="M3 5 L7 9 L11 5" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M3 5 L7 9 L11 5" stroke="currentColor" strokeWidth="1.5" fill="none"
+                strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>
 
-      {open && (
-        <ul
-          ref={listRef}
-          id={listId}
-          role="listbox"
-          aria-labelledby={labelId}
-          className={styles.dropdownList}
-          onKeyDown={handleListKey}
-        >
-          {options.map((opt) => (
+      <ul
+        ref={listRef}
+        id={listId}
+        role="listbox"
+        aria-labelledby={labelId}
+        tabIndex={-1}
+        className={styles.dropdownList}
+        hidden={!open}
+      >
+        {allOptions.map((opt) => {
+          const isSelected =
+            opt.id === '__none__' ? value === null : opt.id === value;
+          const isActive = opt.id === activeId;
+          return (
             <li
               key={opt.id}
+              id={getOptionId(opt.id)}
               role="option"
-              tabIndex={-1}
-              aria-selected={opt.id === value}
-              className={styles.dropdownOption}
-              onClick={() => select(opt)}
-              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(opt); } }}
+              aria-selected={isSelected}
+              className={`${styles.dropdownOption} ${isActive ? styles.dropdownOptionActive : ''}`}
+              onClick={() => commitSelection(opt)}
+              onMouseEnter={() => setActiveId(opt.id)}
             >
               {opt.name}
             </li>
-          ))}
-        </ul>
-      )}
+          );
+        })}
+      </ul>
     </div>
   );
 }
